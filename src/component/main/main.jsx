@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./main.css";
 import { assets } from "../../assets/assets";
+import { Context } from "../../context/context";
 
 export const Main = () => {
+  const {
+    onSent,
+    recentpromopt,
+    showResult,
+    loading,
+    resultData,
+    setInput,
+    input,
+  } = useContext(Context);
+
   return (
     <div className="main">
       <div className="nav">
@@ -50,13 +61,20 @@ export const Main = () => {
         <div className="main-bottom">
           <div className="search-box">
             <input
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
               className="text"
               type="text"
               placeholder="Enter your prompt here"
             />
             <img className="img2" src={assets.gallery_icon} alt="Gallery" />
             <img className="img2" src={assets.mic_icon} alt="Mic" />
-            <img className="img2" src={assets.send_icon} alt="Send" />
+            <img
+              onClick={() => onSent(input)}
+              className="img2"
+              src={assets.send_icon}
+              alt="Send"
+            />
           </div>
           <p className="bottom-info">Made with ❤️ by Gemini AI Clone</p>
         </div>

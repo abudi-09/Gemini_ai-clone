@@ -82,3 +82,8 @@
 .bottom-item:hover {
   background-color: #e0e0e0;
 }
+@media screen and (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
+}
